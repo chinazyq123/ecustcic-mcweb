@@ -92,7 +92,9 @@
             $serverInfoData = json_decode($serverInfoJson, true);
             
             // 输出服务器信息
-            if ($serverInfoData !== null && ($serverInfoData['version'] !== false || $serverInfoData['hint'] !== false || $serverInfoData['onlinePlayers'] !== false)) {
+            if ($serverInfoData['error'] == '无法连接到服务器') {
+                echo '无法连接到服务器';
+            } elseif ($serverInfoData !== null && ($serverInfoData['version'] !== false || $serverInfoData['hint'] !== false || $serverInfoData['onlinePlayers'] !== false)) {
                 echo '<div class="server-info">';
                 echo '服务器实时信息：';
                 echo '<ul>';
@@ -110,7 +112,7 @@
             <ul>
                 <li>校内：mc.ecust.cloud</li>
                 <li>校外：mc.nakiri.site</li>
-                <li>实时地图：<a href="https://mcmap.ecustcic.eu.org/" target="_blank">点击进入（仅校内）</a> <a href="https://mcmap.ecustcic.eu.org/" target="_blank">点击进入</a></li>
+                <li>实时地图：<a href="https://map.ecust.cloud/" target="_blank">点击进入（仅校内）</a> <a href="https://mcmap.ecustcic.eu.org/" target="_blank">点击进入</a></li>
                 <li>
                 <?php
                 // 使用 file_get_contents 获取服务器信息
@@ -120,7 +122,9 @@
                 $serverInfoData = json_decode($serverInfoJson, true);
                 
                 // 输出服务器信息
-                if ($serverInfoData !== null && ($serverInfoData['version'] !== false || $serverInfoData['hint'] !== false || $serverInfoData['onlinePlayers'] !== false)) {
+                if ($serverInfoData['error'] == '无法连接到服务器') {
+                    echo '无法连接到服务器';
+                } elseif ($serverInfoData !== null && ($serverInfoData['version'] !== false || $serverInfoData['hint'] !== false || $serverInfoData['onlinePlayers'] !== false)) {
                     echo '<div class="server-info">';
                     echo '服务器实时信息：';
                     echo '<ul>';
